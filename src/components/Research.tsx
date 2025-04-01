@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Microscope, Atom, Brain, Flask, Dna } from 'lucide-react';
+import { Microscope, Atom, Brain, Dna, Beaker } from 'lucide-react';
 import ThreeDCard from './ThreeDCard';
 
 const Research = () => {

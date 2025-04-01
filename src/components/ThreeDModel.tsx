@@ -2,10 +2,10 @@
 import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Float, PresentationControls, Environment } from '@react-three/drei';
-import { Mesh } from 'three';
+import { Mesh, Group } from 'three';
 
 const DNA = () => {
-  const group = useRef<THREE.Group>(null);
+  const group = useRef<Group>(null);
   const basePairCount = 10;
   const radius = 2;
   const height = 7;
@@ -18,8 +18,8 @@ const DNA = () => {
   });
 
   // Generate the DNA helix
-  const strandPoints = [];
-  const basePairs = [];
+  const strandPoints: Array<{pos: [number, number, number]; color: string; index: number}> = [];
+  const basePairs: Array<{from: [number, number, number]; to: [number, number, number]; color: string}> = [];
 
   for (let i = 0; i < basePairCount; i++) {
     const t = i / basePairCount;
@@ -52,7 +52,7 @@ const DNA = () => {
     <group ref={group}>
       {/* DNA strands */}
       {strandPoints.map((point, i) => (
-        <mesh key={i} position={[point.pos[0], point.pos[1], point.pos[2]]}>
+        <mesh key={i} position={point.pos}>
           <sphereGeometry args={[0.3, 16, 16]} />
           <meshStandardMaterial color={point.color} />
         </mesh>
@@ -66,46 +66,53 @@ const DNA = () => {
         );
         
         if (next) {
+          const distance = Math.sqrt(
+            Math.pow(next.pos[0] - point.pos[0], 2) + 
+            Math.pow(next.pos[1] - point.pos[1], 2) + 
+            Math.pow(next.pos[2] - point.pos[2], 2)
+          );
+          
+          const midpoint: [number, number, number] = [
+            (next.pos[0] + point.pos[0]) / 2,
+            (next.pos[1] + point.pos[1]) / 2,
+            (next.pos[2] + point.pos[2]) / 2
+          ];
+          
           return (
-            <mesh key={`line-${i}`}>
-              <cylinderGeometry 
-                args={[
-                  0.1, 0.1, 
-                  Math.sqrt(
-                    Math.pow(next.pos[0] - point.pos[0], 2) + 
-                    Math.pow(next.pos[1] - point.pos[1], 2) + 
-                    Math.pow(next.pos[2] - point.pos[2], 2)
-                  )
-                ]} 
-                position={[
-                  (next.pos[0] + point.pos[0]) / 2,
-                  (next.pos[1] + point.pos[1]) / 2,
-                  (next.pos[2] + point.pos[2]) / 2
-                ]}
-              />
-              <meshStandardMaterial color={point.color} />
-            </mesh>
+            <group key={`line-${i}`} position={midpoint}>
+              <mesh>
+                <cylinderGeometry args={[0.1, 0.1, distance]} />
+                <meshStandardMaterial color={point.color} />
+              </mesh>
+            </group>
           );
         }
         return null;
       })}
       
       {/* Base pairs connecting the two strands */}
-      {basePairs.map((pair, i) => (
-        <mesh key={`base-${i}`}>
-          <cylinderGeometry 
-            args={[
-              0.05, 0.05, 
-              Math.sqrt(
-                Math.pow(pair.to[0] - pair.from[0], 2) + 
-                Math.pow(pair.to[1] - pair.from[1], 2) + 
-                Math.pow(pair.to[2] - pair.from[2], 2)
-              )
-            ]} 
-          />
-          <meshStandardMaterial color={pair.color} />
-        </mesh>
-      ))}
+      {basePairs.map((pair, i) => {
+        const distance = Math.sqrt(
+          Math.pow(pair.to[0] - pair.from[0], 2) + 
+          Math.pow(pair.to[1] - pair.from[1], 2) + 
+          Math.pow(pair.to[2] - pair.from[2], 2)
+        );
+        
+        const midpoint: [number, number, number] = [
+          (pair.to[0] + pair.from[0]) / 2,
+          (pair.to[1] + pair.from[1]) / 2,
+          (pair.to[2] + pair.from[2]) / 2
+        ];
+        
+        return (
+          <group key={`base-${i}`} position={midpoint}>
+            <mesh>
+              <cylinderGeometry args={[0.05, 0.05, distance]} />
+              <meshStandardMaterial color={pair.color} />
+            </mesh>
+          </group>
+        );
+      })}
     </group>
   );
 };
