@@ -65,6 +65,7 @@ export default {
 				},
 				// Custom colors for the portfolio
 				research: {
+					50: '#F0F7FF',  // Added research-50 color
 					100: '#E6F7FF',
 					200: '#BAE7FF',
 					300: '#91D5FF',
