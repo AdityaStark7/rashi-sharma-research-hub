@@ -19,7 +19,7 @@ const Experience = () => {
       position: 'Product Research & Design Analyst',
       organization: 'Brainsight AI',
       responsibilities: [
-        'Executed sentimental market analysis and research survey for neurological and psychiatric disorder patients and their caregivers' better management used to build 'VoxelBox' Kokoro aided by AI'
+        "Executed sentimental market analysis and research survey for neurological and psychiatric disorder patients and their caregivers' better management used to build 'VoxelBox' Kokoro aided by AI"
       ]
     },
     {
