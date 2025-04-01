@@ -86,6 +86,11 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Three.js canvas styles */
+  canvas {
+    touch-action: none;
+  }
 }
 
 @layer components {
@@ -137,5 +142,10 @@
   
   .btn-outline {
     @apply px-4 py-2 border border-research-600 text-research-600 rounded-md hover:bg-research-50 transition-colors duration-300;
+  }
+  
+  .three-d-container {
+    @apply relative w-full overflow-hidden rounded-lg shadow-lg;
+    height: 400px;
   }
 }

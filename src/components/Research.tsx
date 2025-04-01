@@ -1,138 +1,148 @@
 
 import React from 'react';
-import { Microscope, Calendar } from 'lucide-react';
+import { Microscope, Atom, Brain, Flask, Dna } from 'lucide-react';
+import ThreeDCard from './ThreeDCard';
 
 const Research = () => {
   const researchProjects = [
     {
-      period: 'Feb 2022 - Sept 2022',
-      title: 'Antigenic Peptide Prediction for Lymphoma Vaccine for Indian Population via Immunoinformatics',
-      guide: 'Dr. Manish Dwivedi, Assistant Professor (III), P.I.: DST-INSPIRE Project'
+      title: "Characterizing Non-coding RNA Variants in Cancer",
+      description: "Investigating the role of non-coding RNA variants in cancer development and progression, with a focus on identifying potential therapeutic targets.",
+      icon: <Dna className="w-12 h-12 text-biomed-600" />,
+      link: "#"
     },
     {
-      period: 'May 2022 - Aug 2022',
-      title: 'Molecular differential selectivity study of inhibitors against CDK12: Insights for Rational Drug Design',
-      guide: 'Dr Soumya Rath, Assistant Professor, National Institute of Technology (NITW)'
+      title: "Abnormal Intronic Polyadenylation in Tumor Development",
+      description: "Analyzing the mechanisms of abnormal intronic polyadenylation and its contribution to tumorigenesis, using both computational and experimental approaches.",
+      icon: <Microscope className="w-12 h-12 text-biomed-600" />,
+      link: "#"
     },
     {
-      period: 'Oct 2021 - Jan 2022',
-      title: 'PROTACs (Proteolysis Targeting Chimeras) Ubiquitination: Application in Antimicrobial Resistance',
-      guide: 'Dr Tara Chand, Post-Doc., Indian Institute of Technology (IIT) Roorkee & Universitat Rovira i Virgili, Spain'
+      title: "Development of New Genome Editing Tools",
+      description: "Creating and optimizing innovative genome editing techniques for precise DNA modification, with applications in gene therapy and disease modeling.",
+      icon: <Atom className="w-12 h-12 text-biomed-600" />,
+      link: "#"
+    },
+    {
+      title: "Cell Lineage Tracing with macsGESTALT",
+      description: "Evaluating and enhancing the macsGESTALT phylogenic tracing model for accurate cell lineage reconstruction in developmental biology studies.",
+      icon: <Brain className="w-12 h-12 text-biomed-600" />,
+      link: "#"
     }
   ];
 
-  const otherProjects = [
-    'BrainBox project was a platform, aiming to raise social awareness of overlooked mental health conditions with an amalgamation of fun, connection and social change. A potent toolbox for facilitating and improving the overall health of the brain, mind and head.',
-    'iGEM Delhi University team member, RDT-based production of FHIT-Protein for Non-Small Cell Lung Adenocarcinoma therapy.',
-    'Aggregate-Green project was an initiative aiming to solve the management and awareness issues of Indian agriculture sector. Developing a blockchain-based monitoring system that is easily integrated with GIS software and satellite imagery AI-based weather & irrigation.'
-  ];
-
-  const conferences = [
-    {
-      date: 'June 2022',
-      title: 'Re-designing of natural proteins-Enzymes for novel applications',
-      detail: 'Presenter at the International Conference on Proteomics, Transcriptomics and Molecular Drug Design organized by Delhi University.'
-    },
-    {
-      date: 'May 2022',
-      title: 'Prediction of Hepatitis Disease Using Machine Learning Technique',
-      detail: 'Research poster presenter at the Science of HBV Cure 2022 focusing on the Science of Hepatitis B Cure organized by the Singapore Hepatology Conference.',
-      link: '#'
-    },
-    {
-      date: 'Feb 2022',
-      title: 'Prediction of AMR and antibiotic discovery using Deep Neural Networks',
-      detail: 'Research poster presenter at Antimicrobial Chemotherapy Virtual Conference 2022 on Antimicrobial Resistance.',
-      link: '#'
-    },
-    {
-      date: 'Dec 2021',
-      title: 'A detailed study of the effect of SARS-COV-2 vaccines on HIV patients',
-      detail: 'International Seminar on Recent Trends.'
-    }
+  const skills = [
+    { title: "RNA-seq", color: "#4CAF50", hoveredColor: "#2E7D32" },
+    { title: "CRISPR", color: "#2196F3", hoveredColor: "#1565C0" },
+    { title: "Python", color: "#9C27B0", hoveredColor: "#6A1B9A" },
+    { title: "R", color: "#F44336", hoveredColor: "#C62828" },
+    { title: "Bioinformatics", color: "#FF9800", hoveredColor: "#EF6C00" },
+    { title: "Cell Culture", color: "#009688", hoveredColor: "#00695C" }
   ];
 
   return (
-    <section id="research" className="py-20">
+    <section id="research" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-title">Research Projects</h2>
+        <h2 className="section-title">Research Focus</h2>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
           {researchProjects.map((project, index) => (
             <div 
-              key={index} 
-              className="card hover:border-research-200 animate-fade-in opacity-0"
+              key={index}
+              className="card p-6 h-full flex flex-col transition-transform duration-300 hover:scale-[1.02] animate-fade-in opacity-0"
               style={{ animationDelay: `${0.1 * index}s` }}
             >
-              <div className="p-6">
-                <div className="flex items-start mb-4">
-                  <div className="p-2 bg-research-100 rounded-full mr-4">
-                    <Microscope className="text-research-600" size={24} />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900">{project.title}</h3>
-                  </div>
-                </div>
-                
-                <div className="ml-12">
-                  <div className="flex items-center text-gray-600 mb-3">
-                    <Calendar size={16} className="mr-2" />
-                    <span>{project.period}</span>
-                  </div>
-                  
-                  <div className="mt-2">
-                    <span className="font-medium text-gray-700">Guide:</span>
-                    <p className="text-gray-600">{project.guide}</p>
-                  </div>
-                </div>
-              </div>
+              <div className="mb-4">{project.icon}</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">{project.title}</h3>
+              <p className="text-gray-700 flex-grow">{project.description}</p>
+              <a 
+                href={project.link} 
+                className="mt-4 inline-flex items-center text-biomed-600 hover:text-biomed-800"
+              >
+                Learn more
+                <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14"></path>
+                  <path d="M12 5l7 7-7 7"></path>
+                </svg>
+              </a>
             </div>
           ))}
         </div>
         
         <div className="mt-16">
-          <h3 className="text-xl font-semibold text-gray-900 mb-6">Other Research Initiatives</h3>
-          <div className="space-y-4">
-            {otherProjects.map((project, index) => (
-              <div 
-                key={index} 
-                className="p-5 bg-white rounded-lg border border-gray-100 shadow-sm animate-fade-in opacity-0"
-                style={{ animationDelay: `${0.4 + 0.1 * index}s` }}
-              >
-                <p className="text-gray-700">{project}</p>
-              </div>
-            ))}
-          </div>
+          <h3 className="text-2xl font-bold text-gray-900 mb-6">Research Skills</h3>
+          <ThreeDCard cards={skills} />
         </div>
         
-        <div className="mt-16">
-          <h3 className="text-xl font-semibold text-gray-900 mb-6">Conferences & Seminars</h3>
-          <div className="space-y-5">
-            {conferences.map((conf, index) => (
-              <div 
-                key={index} 
-                className="flex flex-col md:flex-row animate-fade-in opacity-0"
-                style={{ animationDelay: `${0.7 + 0.1 * index}s` }}
-              >
-                <div className="md:w-1/6 mb-2 md:mb-0">
-                  <span className="inline-block px-3 py-1 text-sm font-medium rounded-full bg-biomed-100 text-biomed-800">
-                    {conf.date}
-                  </span>
-                </div>
-                <div className="md:w-5/6">
-                  <h4 className="text-lg font-medium text-gray-900">{conf.title}</h4>
-                  <p className="text-gray-700 mt-1">{conf.detail}</p>
-                  {conf.link && (
-                    <a 
-                      href={conf.link} 
-                      className="inline-block mt-2 text-sm text-research-600 hover:text-research-700"
-                    >
-                      View Poster →
-                    </a>
-                  )}
-                </div>
-              </div>
-            ))}
+        <div className="mt-16 bg-white rounded-lg shadow-lg p-6 border border-gray-200">
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Technical Expertise</h3>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+            <div className="bg-research-50 p-4 rounded-lg">
+              <h4 className="font-bold text-research-800 mb-2">Laboratory Techniques</h4>
+              <ul className="space-y-1 text-gray-700">
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-research-600 rounded-full mr-2"></span>
+                  Next-Generation Sequencing
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-research-600 rounded-full mr-2"></span>
+                  CRISPR/Cas9 Genome Editing
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-research-600 rounded-full mr-2"></span>
+                  Cell Culture & Tissue Engineering
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-research-600 rounded-full mr-2"></span>
+                  RNA-seq & ChIP-seq
+                </li>
+              </ul>
+            </div>
+            
+            <div className="bg-biomed-50 p-4 rounded-lg">
+              <h4 className="font-bold text-biomed-800 mb-2">Computational Methods</h4>
+              <ul className="space-y-1 text-gray-700">
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-biomed-600 rounded-full mr-2"></span>
+                  Bioinformatics Pipeline Development
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-biomed-600 rounded-full mr-2"></span>
+                  Statistical Analysis in R
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-biomed-600 rounded-full mr-2"></span>
+                  Machine Learning for Genomics
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-biomed-600 rounded-full mr-2"></span>
+                  Python for Data Analysis
+                </li>
+              </ul>
+            </div>
+            
+            <div className="bg-gray-100 p-4 rounded-lg">
+              <h4 className="font-bold text-gray-800 mb-2">Specialized Knowledge</h4>
+              <ul className="space-y-1 text-gray-700">
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-gray-600 rounded-full mr-2"></span>
+                  Cancer Genomics
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-gray-600 rounded-full mr-2"></span>
+                  RNA Biology & Regulation
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-gray-600 rounded-full mr-2"></span>
+                  Translational Medicine
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-gray-600 rounded-full mr-2"></span>
+                  Clinical Biomarker Development
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
