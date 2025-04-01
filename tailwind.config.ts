@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,29 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Custom colors for the portfolio
+				research: {
+					100: '#E6F7FF',
+					200: '#BAE7FF',
+					300: '#91D5FF',
+					400: '#69C0FF',
+					500: '#40A9FF',
+					600: '#1890FF',
+					700: '#096DD9',
+					800: '#0050B3',
+					900: '#003A8C',
+				},
+				biomed: {
+					100: '#E6FFFB',
+					200: '#B5F5EC',
+					300: '#87E8DE',
+					400: '#5CDBD3',
+					500: '#36CFC9',
+					600: '#13C2C2',
+					700: '#08979C',
+					800: '#006D75',
+					900: '#00474F',
 				}
 			},
 			borderRadius: {
@@ -84,11 +108,25 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': { opacity: '0', transform: 'translateY(10px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				'slide-in': {
+					'0%': { transform: 'translateX(-20px)', opacity: '0' },
+					'100%': { transform: 'translateX(0)', opacity: '1' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.5s ease-out forwards',
+				'slide-in': 'slide-in 0.4s ease-out forwards'
+			},
+			fontFamily: {
+				sans: ['Inter', 'sans-serif'],
+				serif: ['Merriweather', 'serif'],
 			}
 		}
 	},
