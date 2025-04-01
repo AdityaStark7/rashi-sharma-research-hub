@@ -65,7 +65,7 @@ export default {
 				},
 				// Custom colors for the portfolio
 				research: {
-					50: '#F0F7FF',  // Added research-50 color
+					50: '#F0F7FF',
 					100: '#E6F7FF',
 					200: '#BAE7FF',
 					300: '#91D5FF',
@@ -77,6 +77,7 @@ export default {
 					900: '#003A8C',
 				},
 				biomed: {
+					50: '#F0FDFB', // Added lighter shade
 					100: '#E6FFFB',
 					200: '#B5F5EC',
 					300: '#87E8DE',
@@ -117,13 +118,18 @@ export default {
 				'slide-in': {
 					'0%': { transform: 'translateX(-20px)', opacity: '0' },
 					'100%': { transform: 'translateX(0)', opacity: '1' }
+				},
+				'pulse': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.5' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.5s ease-out forwards',
-				'slide-in': 'slide-in 0.4s ease-out forwards'
+				'slide-in': 'slide-in 0.4s ease-out forwards',
+				'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
