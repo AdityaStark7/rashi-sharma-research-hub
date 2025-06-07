@@ -1,148 +1,110 @@
+
 import React from 'react';
 import { Microscope, Atom, Brain, Dna, Beaker } from 'lucide-react';
 import ThreeDCard from './ThreeDCard';
 
 const Research = () => {
-  const researchProjects = [
+  const researchCards = [
     {
-      title: "Characterizing Non-coding RNA Variants in Cancer",
-      description: "Investigating the role of non-coding RNA variants in cancer development and progression, with a focus on identifying potential therapeutic targets.",
-      icon: <Dna className="w-12 h-12 text-biomed-600" />,
-      link: "#"
+      title: "Molecular Biology",
+      color: "#3B82F6",
+      hoveredColor: "#1E40AF"
     },
     {
-      title: "Abnormal Intronic Polyadenylation in Tumor Development",
-      description: "Analyzing the mechanisms of abnormal intronic polyadenylation and its contribution to tumorigenesis, using both computational and experimental approaches.",
-      icon: <Microscope className="w-12 h-12 text-biomed-600" />,
-      link: "#"
+      title: "Bioengineering",
+      color: "#10B981",
+      hoveredColor: "#047857"
     },
     {
-      title: "Development of New Genome Editing Tools",
-      description: "Creating and optimizing innovative genome editing techniques for precise DNA modification, with applications in gene therapy and disease modeling.",
-      icon: <Atom className="w-12 h-12 text-biomed-600" />,
-      link: "#"
+      title: "Neuroscience",
+      color: "#8B5CF6",
+      hoveredColor: "#6D28D9"
     },
     {
-      title: "Cell Lineage Tracing with macsGESTALT",
-      description: "Evaluating and enhancing the macsGESTALT phylogenic tracing model for accurate cell lineage reconstruction in developmental biology studies.",
-      icon: <Brain className="w-12 h-12 text-biomed-600" />,
-      link: "#"
+      title: "Genetics",
+      color: "#F59E0B",
+      hoveredColor: "#D97706"
     }
   ];
 
-  const skills = [
-    { title: "RNA-seq", color: "#4CAF50", hoveredColor: "#2E7D32" },
-    { title: "CRISPR", color: "#2196F3", hoveredColor: "#1565C0" },
-    { title: "Python", color: "#9C27B0", hoveredColor: "#6A1B9A" },
-    { title: "R", color: "#F44336", hoveredColor: "#C62828" },
-    { title: "Bioinformatics", color: "#FF9800", hoveredColor: "#EF6C00" },
-    { title: "Cell Culture", color: "#009688", hoveredColor: "#00695C" }
-  ];
-
   return (
-    <section id="research" className="py-20 bg-gray-50">
+    <section id="research" className="py-20 bg-gradient-to-br from-research-50 to-research-100">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-title">Research Focus</h2>
-        
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-          {researchProjects.map((project, index) => (
-            <div 
-              key={index}
-              className="card p-6 h-full flex flex-col transition-transform duration-300 hover:scale-[1.02] animate-fade-in opacity-0"
-              style={{ animationDelay: `${0.1 * index}s` }}
-            >
-              <div className="mb-4">{project.icon}</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">{project.title}</h3>
-              <p className="text-gray-700 flex-grow">{project.description}</p>
-              <a 
-                href={project.link} 
-                className="mt-4 inline-flex items-center text-biomed-600 hover:text-biomed-800"
-              >
-                Learn more
-                <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14"></path>
-                  <path d="M12 5l7 7-7 7"></path>
-                </svg>
-              </a>
-            </div>
-          ))}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-research-800 mb-4">Research Areas</h2>
+          <p className="text-lg text-research-600 max-w-3xl mx-auto">
+            Exploring the frontiers of biomedical science through interdisciplinary research
+          </p>
         </div>
-        
-        <div className="mt-16">
-          <h3 className="text-2xl font-bold text-gray-900 mb-6">Research Skills</h3>
-          <ThreeDCard cards={skills} />
-        </div>
-        
-        <div className="mt-16 bg-white rounded-lg shadow-lg p-6 border border-gray-200">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Technical Expertise</h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-            <div className="bg-research-50 p-4 rounded-lg">
-              <h4 className="font-bold text-research-800 mb-2">Laboratory Techniques</h4>
-              <ul className="space-y-1 text-gray-700">
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-research-600 rounded-full mr-2"></span>
-                  Next-Generation Sequencing
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-research-600 rounded-full mr-2"></span>
-                  CRISPR/Cas9 Genome Editing
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-research-600 rounded-full mr-2"></span>
-                  Cell Culture & Tissue Engineering
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-research-600 rounded-full mr-2"></span>
-                  RNA-seq & ChIP-seq
-                </li>
-              </ul>
-            </div>
-            
-            <div className="bg-biomed-50 p-4 rounded-lg">
-              <h4 className="font-bold text-biomed-800 mb-2">Computational Methods</h4>
-              <ul className="space-y-1 text-gray-700">
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-biomed-600 rounded-full mr-2"></span>
-                  Bioinformatics Pipeline Development
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-biomed-600 rounded-full mr-2"></span>
-                  Statistical Analysis in R
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-biomed-600 rounded-full mr-2"></span>
-                  Machine Learning for Genomics
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-biomed-600 rounded-full mr-2"></span>
-                  Python for Data Analysis
-                </li>
-              </ul>
-            </div>
-            
-            <div className="bg-gray-100 p-4 rounded-lg">
-              <h4 className="font-bold text-gray-800 mb-2">Specialized Knowledge</h4>
-              <ul className="space-y-1 text-gray-700">
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-gray-600 rounded-full mr-2"></span>
-                  Cancer Genomics
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-gray-600 rounded-full mr-2"></span>
-                  RNA Biology & Regulation
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-gray-600 rounded-full mr-2"></span>
-                  Translational Medicine
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-gray-600 rounded-full mr-2"></span>
-                  Clinical Biomarker Development
-                </li>
-              </ul>
+
+        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+          <div>
+            <h3 className="text-2xl font-semibold text-research-800 mb-6">Current Focus Areas</h3>
+            <div className="space-y-6">
+              <div className="flex items-start space-x-4">
+                <div className="bg-research-100 p-3 rounded-lg">
+                  <Microscope className="w-6 h-6 text-research-600" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-research-800 mb-2">Molecular Mechanisms</h4>
+                  <p className="text-research-600">
+                    Investigating cellular pathways and molecular interactions in disease progression
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="bg-research-100 p-3 rounded-lg">
+                  <Atom className="w-6 h-6 text-research-600" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-research-800 mb-2">Biomedical Engineering</h4>
+                  <p className="text-research-600">
+                    Developing innovative solutions for medical diagnosis and treatment
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="bg-research-100 p-3 rounded-lg">
+                  <Brain className="w-6 h-6 text-research-600" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-research-800 mb-2">Neurological Disorders</h4>
+                  <p className="text-research-600">
+                    Understanding brain function and developing therapeutic interventions
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="bg-research-100 p-3 rounded-lg">
+                  <Dna className="w-6 h-6 text-research-600" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-research-800 mb-2">Genetic Research</h4>
+                  <p className="text-research-600">
+                    Exploring genetic factors in disease susceptibility and treatment response
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
+
+          <div>
+            <ThreeDCard cards={researchCards} />
+          </div>
+        </div>
+
+        <div className="text-center">
+          <div className="inline-flex items-center space-x-2 text-research-600 mb-4">
+            <Beaker className="w-5 h-5" />
+            <span className="text-sm font-medium">Lab Techniques & Methods</span>
+          </div>
+          <p className="text-research-600 max-w-2xl mx-auto">
+            Utilizing cutting-edge laboratory techniques including CRISPR, advanced imaging, 
+            and computational biology to advance our understanding of human health and disease.
+          </p>
         </div>
       </div>
     </section>
