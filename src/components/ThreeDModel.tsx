@@ -54,7 +54,7 @@ const DNA = () => {
       {strandPoints.map((point, i) => (
         <mesh key={i} position={point.pos}>
           <sphereGeometry args={[0.3, 16, 16]} />
-          <meshStandardMaterial color={point.color} />
+          <meshStandardMaterial color={point.color as any} />
         </mesh>
       ))}
       
@@ -82,7 +82,7 @@ const DNA = () => {
             <group key={`line-${i}`} position={midpoint}>
               <mesh>
                 <cylinderGeometry args={[0.1, 0.1, distance]} />
-                <meshStandardMaterial color={point.color} />
+                <meshStandardMaterial color={point.color as any} />
               </mesh>
             </group>
           );
@@ -108,7 +108,7 @@ const DNA = () => {
           <group key={`base-${i}`} position={midpoint}>
             <mesh>
               <cylinderGeometry args={[0.05, 0.05, distance]} />
-              <meshStandardMaterial color={pair.color} />
+              <meshStandardMaterial color={pair.color as any} />
             </mesh>
           </group>
         );
@@ -146,21 +146,21 @@ const FloatingMolecules = () => {
       <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
         <mesh ref={meshRef1} position={[-3, 2, -2]}>
           <dodecahedronGeometry args={[0.7]} />
-          <meshStandardMaterial color="hotpink" />
+          <meshStandardMaterial color={"hotpink" as any} />
         </mesh>
       </Float>
       
       <Float speed={1.5} rotationIntensity={0.7} floatIntensity={1.5}>
         <mesh ref={meshRef2} position={[3.5, -1, -1]}>
           <icosahedronGeometry args={[0.8]} />
-          <meshStandardMaterial color="lightblue" />
+          <meshStandardMaterial color={"lightblue" as any} />
         </mesh>
       </Float>
       
       <Float speed={2.5} rotationIntensity={0.6} floatIntensity={1.2}>
         <mesh ref={meshRef3} position={[0, 3, -3]}>
           <octahedronGeometry args={[0.6]} />
-          <meshStandardMaterial color="lightgreen" />
+          <meshStandardMaterial color={"lightgreen" as any} />
         </mesh>
       </Float>
     </group>
